@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Object Detection & Image Analysis</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎯 AI Object Detection & Image Analysis</h1>
+            <p>Real-time computer vision using TensorFlow.js and COCO-SSD</p>
+        </header>
+
+        <main>
+            <!-- Upload Section -->
+            <section class="upload-section">
+                <h2>Upload Image or Use Camera</h2>
+                <div class="upload-controls">
+                    <div class="file-upload">
+                        <input type="file" id="imageInput" accept="image/*">
+                        <label for="imageInput" class="upload-btn">📁 Choose Image</label>
+                    </div>
+                    <button id="cameraBtn" class="btn-primary">📷 Use Camera</button>
+                </div>
+            </section>
+
+            <!-- Camera Section (Hidden by default) -->
+            <section id="cameraSection" class="camera-section" style="display: none;">
+                <h2>Camera Feed</h2>
+                <div class="camera-container">
+                    <video id="cameraFeed" autoplay playsinline></video>
+                    <canvas id="cameraCanvas" style="display: none;"></canvas>
+                </div>
+                <div class="camera-controls">
+                    <button id="captureBtn" class="btn-primary">📸 Capture Photo</button>
+                    <button id="closeCameraBtn" class="btn-secondary">Close Camera</button>
+                </div>
+            </section>
+
+            <!-- Image Preview & Analysis -->
+            <section id="analysisSection" class="analysis-section" style="display: none;">
+                <h2>Analysis Results</h2>
+                
+                <div class="image-container">
+                    <canvas id="outputCanvas"></canvas>
+                </div>
+
+                <div class="results-grid">
+                    <!-- Detected Objects -->
+                    <div class="results-card">
+                        <h3>🔍 Detected Objects</h3>
+                        <div id="objectsList" class="objects-list"></div>
+                    </div>
+
+                    <!-- Statistics -->
+                    <div class="results-card">
+                        <h3>📊 Statistics</h3>
+                        <div id="statistics" class="statistics"></div>
+                    </div>
+
+                    <!-- Confidence Scores -->
+                    <div class="results-card">
+                        <h3>📈 Confidence Scores</h3>
+                        <div id="confidenceScores" class="confidence-scores"></div>
+                    </div>
+
+                    <!-- Image Info -->
+                    <div class="results-card">
+                        <h3>ℹ️ Image Information</h3>
+                        <div id="imageInfo" class="image-info"></div>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="action-buttons">
+                    <button id="downloadBtn" class="btn-primary">⬇️ Download Results</button>
+                    <button id="analyzeAgainBtn" class="btn-secondary">🔄 Analyze Another</button>
+                </div>
+            </section>
+
+            <!-- Info Section -->
+            <section class="info-section">
+                <h2>How It Works</h2>
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h3>🧠 Deep Learning</h3>
+                        <p>Uses COCO-SSD pre-trained model for accurate object detection across 90+ object categories.</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>⚡ Real-time Processing</h3>
+                        <p>Analyzes images instantly in the browser with GPU acceleration support.</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>📱 Multi-source Input</h3>
+                        <p>Supports image upload, camera capture, and URL input for maximum flexibility.</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>🎨 Visual Output</h3>
+                        <p>Displays bounding boxes with labels and confidence scores for easy interpretation.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Supported Objects -->
+            <section class="supported-section">
+                <h2>Supported Object Categories (90+)</h2>
+                <div class="categories-grid" id="categoriesGrid"></div>
+            </section>
+        </main>
+
+        <footer>
+            <p>Built with TensorFlow.js & COCO-SSD | Computer Vision AI Project</p>
+            <p>Processes all data locally in your browser - No data sent to servers</p>
+        </footer>
+    </div>
+
+    <!-- Loading Spinner -->
+    <div id="loadingSpinner" class="loading-spinner" style="display: none;">
+        <div class="spinner"></div>
+        <p>Loading model and analyzing image...</p>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.0.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd@2.2.2"></script>
+    <script src="script.js"></script>
+</body>
+</html>
